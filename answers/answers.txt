@@ -1,0 +1,117 @@
+PART 2:
+
+What are all the types of pokemon that a pokemon can have?
+SELECT name FROM pokemon.types;
++----------+
+| name     |
++----------+
+| Normal   |
+| Water    |
+| Grass    |
+| Rock     |
+| Fire     |
+| Ground   |
+| Poison   |
+| Bug      |
+| Electric |
+| Dragon   |
+| Steel    |
+| Dark     |
+| Fighting |
+| Psychic  |
+| Ghost    |
+| Fairy    |
+| Ice      |
+| Flying   |
++----------+
+18 rows in set (0.02 sec)
+
+
+What is the name of the pokemon with id 45?
+SELECT name FROM pokemon.pokemons WHERE id = '45';
++-------+
+| name  |
++-------+
+| Eevee |
++-------+
+1 row in set (0.00 sec)
+
+
+How many pokemon are there?
+SELECT * FROM pokemon.pokemons;
+656 rows in set (0.01 sec)
+
+
+How many types are there?
+SELECT * FROM pokemon.types;
+18 rows in set (0.02 sec)
+
+
+How many pokemon have a secondary type?
+SELECT secondary_type FROM pokemon.pokemons WHERE secondary_type IS NOT NULL;
+316 rows in set (0.00 sec)
+
+
+
+
+
+PART 3:
+
+What is each pokemon's primary type?
+SELECT primary_type FROM pokemon.pokemons;
+656 rows in set (0.00 sec)
+
+
+What is Rufflet's secondary type?
+SELECT primary_type FROM pokemon.pokemons WHERE name = 'Rufflet';
++--------------+
+| primary_type |
++--------------+
+|            1 |
++--------------+
+1 row in set (0.00 sec)
+
+
+What are the names of the pokemon that belong to the trainer with trainerID 303?
+SELECT pokemon_id FROM pokemon.pokemon_trainer WHERE trainerID = '303';
++------------+
+| pokemon_id |
++------------+
+|          2 |
+|          3 |
++------------+
+2 rows in set (0.02 sec)
+
+
+How many pokemon have a secondary type Poison?
+SELECT secondary_type FROM pokemon.pokemons WHERE secondary_type = '7';
+31 rows in set (0.00 sec)
+
+
+What are all the primary types and how many pokemon have that type?
+
+
+
+How many pokemon at level 100 does each trainer with at least one level 100 pokemone have? (Hint: your query should not display a trainer
+How many pokemon only belong to one trainer and no other?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
