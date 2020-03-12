@@ -164,7 +164,7 @@ SELECT DISTINCT pokemon_id,
 
 PART 4
 
-SELECT ROUND(AVG(pt.spatk + pt.attack + pt.defense)) AS average,
+SELECT ROUND(AVG(pt.spatk + pt.attack + pt.defense)) AS Attack_Power,
 p.name AS Pokemon,
 trainername AS Trainer_Name,
 pokelevel AS Level,
@@ -176,7 +176,7 @@ JOIN trainers AS t ON t.trainerID = pt.trainerID
 JOIN types AS typeP ON p.primary_type = typeP.id
 LEFT JOIN types AS typeS ON p.secondary_type = typeS.id
 GROUP BY p.name, t.trainername, pokelevel, typeP.name, typeS.name
-ORDER BY average DESC;
+ORDER BY Attack_Power DESC;
 
 
 I decided to sort my data by the pokemon's special attack, attack and defense to get the strongest pokemon.
