@@ -77,14 +77,17 @@ SELECT DISTINCT pokemons.secondary_type, types.name
 
 
 What are the names of the pokemon that belong to the trainer with trainerID 303?
-SELECT pokemon_id FROM pokemon.pokemon_trainer WHERE trainerID = '303';
-+------------+
-| pokemon_id |
-+------------+
-|          2 |
-|          3 |
-+------------+
-2 rows in set (0.02 sec)
+SELECT pokemons.name
+    -> FROM pokemons
+    -> INNER JOIN pokemon_trainer
+    -> ON pokemons.id = pokemon_trainer.pokemon_id
+    -> WHERE trainerID = 303;
++-----------+
+| name      |
++-----------+
+| Wailord   |
+| Vileplume |
++-----------+
 
 
 How many pokemon have a secondary type Poison?
@@ -155,3 +158,26 @@ SELECT DISTINCT pokemon_id,
 |        656 |        1 |
 +------------+----------+
 13 rows in set (0.03 sec)
+
+
+
+
+PART 4
+
+SELECT ROUND(AVG(pt.spatk + pt.attack + pt.defense)) AS average,
+p.name AS Pokemon,
+trainername AS Trainer_Name,
+pokelevel AS Level,
+typeP.name AS Primary_Type,
+IFNULL(typeS.name, ' ') AS Secondary_Type
+FROM pokemon_trainer AS pt
+JOIN pokemons AS p ON pt.pokemon_id = p.id
+JOIN trainers AS t ON t.trainerID = pt.trainerID
+JOIN types AS typeP ON p.primary_type = typeP.id
+LEFT JOIN types AS typeS ON p.secondary_type = typeS.id
+GROUP BY p.name, t.trainername, pokelevel, typeP.name, typeS.name
+ORDER BY average DESC;
+
+
+I decided to sort my data by the pokemon's special attack, attack and defense to get the strongest pokemon.
+The better the pokemon attack and defense is, the more it can fight the competition.
